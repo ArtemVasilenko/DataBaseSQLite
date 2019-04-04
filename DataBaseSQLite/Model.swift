@@ -7,10 +7,7 @@ protocol DB {
     func createDataBase(url: URL) -> OpaquePointer
     func createTableInDB(db: OpaquePointer, newTable: String)
     func insertInTable(db: OpaquePointer, inTable: String, name: String)
-    func updateTable(db: OpaquePointer, inTable: String, name: String, id: String)
     func updateTableWithGuard(db: OpaquePointer, inTable: String, name: String, id: String)
-
-    
 }
 
 
@@ -38,26 +35,24 @@ extension DB {
     func createDataBase(url: URL) -> OpaquePointer {
         var db: OpaquePointer? = nil
         
-        if sqlite3_open(url.path, &db) == SQLITE_OK {
-            print("create done \(url.path)")
-        } else {
+        guard sqlite3_open(url.path, &db) == SQLITE_OK else {
             print("error creating bd \(Error.self)")
-        }
+            return db! }
+        print("create done \(url.path)")
         return db!
     }
     
     func createTableInDB(db: OpaquePointer, newTable: String) {
         var table: OpaquePointer? = nil
         
-        if sqlite3_prepare_v2(db, newTable, -1, &table, nil) == SQLITE_OK {
-            if sqlite3_step(table) == SQLITE_DONE {
-                print("table query")
-            } else {
-                print("table query error")
-            }
-        } else {
+        guard sqlite3_prepare_v2(db, newTable, -1, &table, nil) == SQLITE_OK else {
             print("prepare error")
+            return }
+        guard sqlite3_step(table) == SQLITE_DONE else {
+            print("table query error")
+            return
         }
+        print("table query")
         
         sqlite3_finalize(table) //закрытие таблицы после изменений (транзакции)
     }
@@ -67,34 +62,13 @@ extension DB {
         let insertString = """
         INSERT INTO \(inTable) (name) VALUES ('\(name)');
         """
-        if sqlite3_prepare_v2(db, insertString, -1, &insert, nil) == SQLITE_OK {
-            if sqlite3_step(insert) == SQLITE_DONE {
-                print("insert new \(name) in \(inTable)")
-            } else {
-                print("error insert \(name)")
-            }
-        } else {
-            print("error create new insert")
+        guard sqlite3_prepare_v2(db, insertString, -1, &insert, nil) == SQLITE_OK,
+            sqlite3_step(insert) == SQLITE_DONE else {
+                print("error insert in table")
+                return
         }
+        print("insert in table done")
         sqlite3_finalize(insert)
-    }
-    
-    func updateTable(db: OpaquePointer, inTable: String, name: String, id: String) {
-        var update: OpaquePointer? = nil
-        let updateString = """
-        UPDATE \(inTable) SET name = '\(name)' WHERE iD = \(id)
-        """
-        if sqlite3_prepare_v2(db, updateString, -1, &update, nil) == SQLITE_OK {
-            
-            if sqlite3_step(update) == SQLITE_DONE {
-                print("update done")
-            } else {
-                print("update error")
-            }
-        } else {
-            print("error prepare update ")
-        }
-        sqlite3_finalize(update)
     }
     
     func updateTableWithGuard(db: OpaquePointer, inTable: String, name: String, id: String) {

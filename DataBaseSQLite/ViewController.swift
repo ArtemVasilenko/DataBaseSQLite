@@ -8,7 +8,7 @@ class ViewController: UIViewController, DB {
     var nameDB = "DataBase_From_XCode_Project.db"
     var db: OpaquePointer?
     let createMyTable = #"""
-        CREATE TABLE "MyTableFromXCode" (
+        CREATE TABLE "MyTableFromXCodeGuard" (
         "ID"    INTEGER PRIMARY KEY AUTOINCREMENT,
         "Name"    TEXT NOT NULL UNIQUE
         );
@@ -23,10 +23,10 @@ class ViewController: UIViewController, DB {
         removeDB(url: url!, fm: fm)
         db = createDataBase(url: url!)
         createTableInDB(db: db!, newTable: createMyTable)
-        insertInTable(db: db!, inTable: "MyTableFromXCode", name: "Ignat")
-        insertInTable(db: db!, inTable: "MyTableFromXCode", name: "Holodov")
-        updateTable(db: db!, inTable: "MyTableFromXCode", name: "Ignat LOH", id: "1")
-        updateTableWithGuard(db: db!, inTable: "MyTableFromXCode", name: "Hello Holodov", id: "2")
+        insertInTable(db: db!, inTable: "MyTableFromXCodeGuard", name: "Ignat")
+        insertInTable(db: db!, inTable: "MyTableFromXCodeGuard", name: "Holodov")
+    
+        updateTableWithGuard(db: db!, inTable: "MyTableFromXCodeGuard", name: "Hi Holodov", id: "2")
         
         sqlite3_close(db)
         
