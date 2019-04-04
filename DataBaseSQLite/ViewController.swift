@@ -13,7 +13,6 @@ class ViewController: UIViewController, DB {
         "Name"    TEXT NOT NULL UNIQUE
         );
         """#
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,5 @@ class ViewController: UIViewController, DB {
         sqlite3_close(db)
         
     }
-
-    
 }
 
