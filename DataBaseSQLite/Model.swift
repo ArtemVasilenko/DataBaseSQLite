@@ -4,7 +4,7 @@ import Foundation
 protocol DB {
     func removeDB(url: URL, fm: FileManager)
     func createURL(nameDB: String, fm: FileManager) -> URL
-    func createDataBase(url: URL) -> OpaquePointer
+    func createDataBase(url: URL) -> OpaquePointer?
     func createTableInDB(db: OpaquePointer, newTable: String)
     func insertInTable(db: OpaquePointer, inTable: String, name: String)
     func updateTableWithGuard(db: OpaquePointer, inTable: String, name: String, id: String)
@@ -32,14 +32,14 @@ extension DB {
         
     }
     
-    func createDataBase(url: URL) -> OpaquePointer {
+    func createDataBase(url: URL) -> OpaquePointer? {
         var db: OpaquePointer? = nil
         
         guard sqlite3_open(url.path, &db) == SQLITE_OK else {
             print("error creating bd \(Error.self)")
-            return db! }
+            return nil }
         print("create done \(url.path)")
-        return db!
+        return db
     }
     
     func createTableInDB(db: OpaquePointer, newTable: String) {

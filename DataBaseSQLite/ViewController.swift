@@ -18,7 +18,6 @@ class ViewController: UIViewController, DB {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         url = createURL(nameDB: nameDB, fm: fm)
         removeDB(url: url!, fm: fm)
         db = createDataBase(url: url!)
