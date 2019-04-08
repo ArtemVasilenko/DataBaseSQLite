@@ -32,13 +32,16 @@
                                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Create Data Base"/>
                                                         <connections>
-                                                            <action selector="btnCreateDB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neA-hf-Jm6"/>
+                                                            <action selector="actionButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neA-hf-Jm6"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6K-Vs-9dF">
                                                         <rect key="frame" x="0.0" y="83" width="374" height="76"/>
                                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Create table"/>
+                                                        <connections>
+                                                            <action selector="actionButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKJ-qS-nd4"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVv-Fb-gOW">
                                                         <rect key="frame" x="0.0" y="166" width="374" height="76"/>
@@ -82,6 +85,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outletCollection property="controlButtons" destination="aSV-Tx-TxF" collectionClass="NSMutableArray" id="Al0-vs-V8h"/>
+                        <outletCollection property="controlButtons" destination="r6K-Vs-9dF" collectionClass="NSMutableArray" id="Sli-cj-y4p"/>
+                        <outletCollection property="controlButtons" destination="IVv-Fb-gOW" collectionClass="NSMutableArray" id="haS-dw-hnH"/>
+                        <outletCollection property="controlButtons" destination="3HM-44-Aez" collectionClass="NSMutableArray" id="UyT-BI-MCW"/>
+                        <outletCollection property="controlButtons" destination="Zhh-4y-Xhy" collectionClass="NSMutableArray" id="8Bj-46-6xz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

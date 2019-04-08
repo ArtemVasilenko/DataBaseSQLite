@@ -1,8 +1,12 @@
 import UIKit
 //import SQLite3
 
+//enum getInfo: Int {
+//    case createBD
+//    case createTable
+//}
+
 class ViewController: UIViewController, DB {
-    
     var createDbAlert = Alert()
     
 //    var fm = FileManager.default
@@ -23,6 +27,9 @@ class ViewController: UIViewController, DB {
         "Name"    TEXT NOT NULL UNIQUE
         );
         """#
+    
+    
+    @IBOutlet var controlButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +60,18 @@ class ViewController: UIViewController, DB {
     }
     
     
-    @IBAction func btnCreateDB(_ sender: UIButton) {
-        createDbAlert.showAlert(inVC: self)
+    @IBAction func actionButtons(_ sender: UIButton) {
+        //createDbAlert.showAlert(inVC: self)
+        
+        guard let actionEventNumber = getInfo(rawValue: controlButtons.firstIndex(of: sender)!) else { return }
+        
+        switch actionEventNumber {
+        case .createBD: createDbAlert.showAlert(inVC: self)
+        case .createTable: print("tap createTable button")
+        }
         
     }
+    
+    
 }
 

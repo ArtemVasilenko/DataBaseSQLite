@@ -2,6 +2,11 @@ import SQLite3
 import Foundation
 import UIKit
 
+enum getInfo: Int {
+    case createBD
+    case createTable
+}
+
 protocol DB {
     func removeDB(url: URL, fm: FileManager)
     func createURL(nameDB: String, fm: FileManager) -> URL
@@ -194,9 +199,7 @@ extension DB {
             }
             values.append(value)
             
-            
         }
-        
         
         return values
     }
@@ -206,24 +209,3 @@ extension DB {
     }
 }
 
-
-
-
-
-
-
-
-
-extension UIAlertController {
-    
-    func presentInOwnWindow(animated: Bool, completion: (() -> Void)?) {
-        
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
-        alertWindow.windowLevel = UIWindow.Level.alert + 1
-        alertWindow.makeKeyAndVisible()
-        alertWindow.rootViewController?.present(self, animated: animated, completion: completion)
-    }
-    
-    
-}
