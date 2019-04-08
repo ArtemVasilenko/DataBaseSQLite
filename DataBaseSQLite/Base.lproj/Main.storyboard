@@ -30,7 +30,10 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSV-Tx-TxF">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="76"/>
                                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" title="Create Data Base"/>
+                                                        <connections>
+                                                            <action selector="btnCreateDB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neA-hf-Jm6"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6K-Vs-9dF">
                                                         <rect key="frame" x="0.0" y="83" width="374" height="76"/>

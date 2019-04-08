@@ -1,5 +1,6 @@
 import SQLite3
 import Foundation
+import UIKit
 
 protocol DB {
     func removeDB(url: URL, fm: FileManager)
@@ -203,4 +204,26 @@ extension DB {
     func closeDB(db: OpaquePointer) {
         sqlite3_close(db)
     }
+}
+
+
+
+
+
+
+
+
+
+extension UIAlertController {
+    
+    func presentInOwnWindow(animated: Bool, completion: (() -> Void)?) {
+        
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindow.Level.alert + 1
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(self, animated: animated, completion: completion)
+    }
+    
+    
 }
