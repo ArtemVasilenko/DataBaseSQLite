@@ -42,9 +42,9 @@ extension DB {
         var db: OpaquePointer? = nil
         
         guard sqlite3_open(url.path, &db) == SQLITE_OK else {
-            print("error creating bd \(Error.self)")
+            print("error creating DB \(Error.self)")
             return nil }
-        print("create done \(url.path)")
+        print("create DataBase done \(url.path)")
         return db
     }
     
@@ -60,11 +60,12 @@ extension DB {
         guard sqlite3_prepare_v2(db, query, -1, &table, nil) == SQLITE_OK else {
             print("prepare create table: error")
             return }
+        print("query table done")
         guard sqlite3_step(table) == SQLITE_DONE else {
             print("table query error")
             return
         }
-        print("table query \(newTable) done!")
+        print("create table \(newTable) done!")
         
         sqlite3_finalize(table) //закрытие таблицы после изменений (транзакции)
     }

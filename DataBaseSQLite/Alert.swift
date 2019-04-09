@@ -32,9 +32,12 @@ class Alert: DB {
             name = answer.text ?? ""
             
             self.createTableInDB(db: myData.db!, newTable: name)
-            myData.arrTables.append(name)
-            
+//            myData.arrTables.append(name)
         }
+        
+        myData.arrTables.append(name)
+
+        
         alert.addAction(submitAction)
         inVC.present(alert, animated: true, completion: nil)
     }

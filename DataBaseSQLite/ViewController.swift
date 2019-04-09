@@ -6,6 +6,10 @@ class ViewController: UIViewController, DB {
     @IBOutlet var controlButtons: [UIButton]!
     @IBOutlet weak var myTable: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        myTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,13 +63,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        cell.backgroundColor = .darkGray
+        
+        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
+        label.text = myData.arrTables[indexPath.row]
+        cell.addSubview(label)
+        
         return cell
         
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return myData.arrTables.count
     }
-    
 }
 
