@@ -1,77 +1,71 @@
 import UIKit
-//import SQLite3
-
-//enum getInfo: Int {
-//    case createBD
-//    case createTable
-//}
 
 class ViewController: UIViewController, DB {
-    var createDbAlert = Alert()
-    
-//    var fm = FileManager.default
-//    var url: URL?
-//    let table = "MyTableFromXCodeGuard"
-//    var nameDB = "DataBase_From_XCode_Project.db"
-//    var db: OpaquePointer?
-    let createMyTable = #"""
-        CREATE TABLE "MyTableFromXCodeGuard" (
-        "ID"    INTEGER PRIMARY KEY AUTOINCREMENT,
-        "Name"    TEXT NOT NULL UNIQUE
-        );
-        """#
-    
-    let createMyTable2 = #"""
-        CREATE TABLE "MyTable" (
-        "ID"    INTEGER PRIMARY KEY AUTOINCREMENT,
-        "Name"    TEXT NOT NULL UNIQUE
-        );
-        """#
-    
+    var alert = Alert()
     
     @IBOutlet var controlButtons: [UIButton]!
+    @IBOutlet weak var myTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        url = createURL(nameDB: nameDB, fm: fm)
-//        removeDB(url: url!, fm: fm)
-//        db = createDataBase(url: url!)
-//        createTableInDB(db: db!, newTable: createMyTable)
-//        createTableInDB(db: db!, newTable: createMyTable2)
-//
-//        insertInTable(db: db!, inTable: self.table, name: "Ignat")
-//        insertInTable(db: db!, inTable: self.table, name: "Holodov")
-//
-//        updateTableWithGuard(db: db!, inTable: self.table, name: "Hi Holodov", id: "2")
-//
-//        print(selectFromTable(db: db!, name: "*", inTable: self.table, afterWhere: ""))
-//
-//        deleteInTable(db: db!, inTable: self.table, id: "1")
-//
-//        print(selectFromTable(db: db!, name: "*", inTable: self.table, afterWhere: ""))
-//        
-//        print(getListTable(db: db!))
-//
-//        print(anySelect(db: db!, query: "SELECT * FROM \(self.table)"))
-//
-//        //        dropTable(db: db!, inTable: self.table)
-//        closeDB(db: db!)
+        myTable.delegate = self
+        myTable.dataSource = self
+        
+        //        url = createURL(nameDB: nameDB, fm: fm)
+        //        removeDB(url: url!, fm: fm)
+        //        db = createDataBase(url: url!)
+        //        createTableInDB(db: db!, newTable: createMyTable)
+        //        createTableInDB(db: db!, newTable: createMyTable2)
+        //
+        //        insertInTable(db: db!, inTable: self.table, name: "Ignat")
+        //        insertInTable(db: db!, inTable: self.table, name: "Holodov")
+        //
+        //        updateTableWithGuard(db: db!, inTable: self.table, name: "Hi Holodov", id: "2")
+        //
+        //        print(selectFromTable(db: db!, name: "*", inTable: self.table, afterWhere: ""))
+        //
+        //        deleteInTable(db: db!, inTable: self.table, id: "1")
+        //
+        //        print(selectFromTable(db: db!, name: "*", inTable: self.table, afterWhere: ""))
+        //
+        //        print(getListTable(db: db!))
+        //
+        //        print(anySelect(db: db!, query: "SELECT * FROM \(self.table)"))
+        //
+        //        //        dropTable(db: db!, inTable: self.table)
+        //        closeDB(db: db!)
     }
     
     
     @IBAction func actionButtons(_ sender: UIButton) {
-        //createDbAlert.showAlert(inVC: self)
         
         guard let actionEventNumber = getInfo(rawValue: controlButtons.firstIndex(of: sender)!) else { return }
         
         switch actionEventNumber {
-        case .createBD: createDbAlert.showAlert(inVC: self)
-        case .createTable: print("tap createTable button")
+        case .createBD: alert.alertCreateDB(inVC: self)
+            
+        case .createTable: alert.alertCreateTable(inVC: self)
         }
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        return cell
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return myData.arrTables.count
+    }
     
 }
 

@@ -2,11 +2,6 @@ import SQLite3
 import Foundation
 import UIKit
 
-enum getInfo: Int {
-    case createBD
-    case createTable
-}
-
 protocol DB {
     func removeDB(url: URL, fm: FileManager)
     func createURL(nameDB: String, fm: FileManager) -> URL
@@ -20,7 +15,6 @@ protocol DB {
     func getListTable(db: OpaquePointer) -> [String]
     func anySelect(db: OpaquePointer, query: String) -> [String]
     func closeDB(db: OpaquePointer)
-    
 }
 
 extension DB {
@@ -56,15 +50,21 @@ extension DB {
     
     func createTableInDB(db: OpaquePointer, newTable: String) {
         var table: OpaquePointer? = nil
+        let query = """
+        CREATE TABLE \(newTable) (
+        "ID"    INTEGER PRIMARY KEY AUTOINCREMENT,
+        "Name"    TEXT NOT NULL UNIQUE
+        );
+        """
         
-        guard sqlite3_prepare_v2(db, newTable, -1, &table, nil) == SQLITE_OK else {
-            print("prepare error")
+        guard sqlite3_prepare_v2(db, query, -1, &table, nil) == SQLITE_OK else {
+            print("prepare create table: error")
             return }
         guard sqlite3_step(table) == SQLITE_DONE else {
             print("table query error")
             return
         }
-        print("table query")
+        print("table query \(newTable) done!")
         
         sqlite3_finalize(table) //закрытие таблицы после изменений (транзакции)
     }
