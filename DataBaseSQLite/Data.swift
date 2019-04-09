@@ -17,9 +17,9 @@ struct myData {
     
     static var fm = FileManager.default
     static var url: URL?
-    static  let table = ""
+    static let table = ""
     static var nameDB = ""
     static var db: OpaquePointer?
-    static var arrTables = [String]()
+    static var arrTables = ["raz", "dva"]
     
 }

@@ -7,11 +7,14 @@ class ViewController: UIViewController, DB {
     @IBOutlet weak var myTable: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
-        myTable.reloadData()
+        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: NSNotification.Name("tableView.reloadRows"), object: nil)
         
         myTable.delegate = self
         myTable.dataSource = self
@@ -41,6 +44,9 @@ class ViewController: UIViewController, DB {
         //        closeDB(db: db!)
     }
     
+    @objc func reloadData() {
+        self.myTable.reloadData()
+    }
     
     @IBAction func actionButtons(_ sender: UIButton) {
         
@@ -48,7 +54,6 @@ class ViewController: UIViewController, DB {
         
         switch actionEventNumber {
         case .createBD: alert.alertCreateDB(inVC: self)
-            
         case .createTable: alert.alertCreateTable(inVC: self)
         }
     }
@@ -56,18 +61,19 @@ class ViewController: UIViewController, DB {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return myData.arrTables.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        cell.backgroundColor = .darkGray
-        
-        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
-        label.text = myData.arrTables[indexPath.row]
-        cell.addSubview(label)
+//
+//        cell.backgroundColor = .darkGray
+//
+//        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
+//        label.text = myData.arrTables[indexPath.row]
+//        cell.addSubview(label)
+        cell.textLabel?.text = myData.arrTables[indexPath.row]
         
         return cell
         
@@ -75,7 +81,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return myData.arrTables.count
+        return 1
     }
 }
 
