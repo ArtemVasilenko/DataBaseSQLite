@@ -1,8 +1,6 @@
-import Foundation
 import UIKit
-import SQLite3
 
-class Alert: DB {
+class Alert {
     
     func alertCreateDB(inVC: UIViewController) {
         var name = String()
@@ -14,7 +12,8 @@ class Alert: DB {
             let answer = alert.textFields![0]
             name = answer.text ?? ""
             
-            myData.db = self.createDataBase(url: self.createURL(nameDB: name + ".db", fm: myData.fm))
+            Engine.myEngine.createDBEngine(name: name) //<--- сингл Тон
+            
         }
         alert.addAction(submitAction)
         inVC.present(alert, animated: true, completion: nil)
@@ -31,20 +30,11 @@ class Alert: DB {
             let answer = alert.textFields![0]
             name = answer.text ?? ""
             
-            self.createTableInDB(db: myData.db!, newTable: name)
-            myData.arrTables.append(name)
-            print("______ \(myData.arrTables)")
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
+            Engine.myEngine.createTableInBDEngine(name: name)
             
         }
         
-        
         alert.addAction(submitAction)
         inVC.present(alert, animated: true, completion: nil)
-        
-        
     }
-    
-    
 }

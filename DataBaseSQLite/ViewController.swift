@@ -10,11 +10,10 @@ class ViewController: UIViewController, DB {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: NSNotification.Name("tableView.reloadRows"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: NSNotification.Name("reloadCellsInTableView"), object: nil)
         
         myTable.delegate = self
         myTable.dataSource = self
@@ -67,18 +66,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//
-//        cell.backgroundColor = .darkGray
-//
-//        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
-//        label.text = myData.arrTables[indexPath.row]
-//        cell.addSubview(label)
+        //
+                cell.backgroundColor = .darkGray
+        //
+        //        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
+        //        label.text = myData.arrTables[indexPath.row]
+        //        cell.addSubview(label)
         cell.textLabel?.text = myData.arrTables[indexPath.row]
         
         return cell
         
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
