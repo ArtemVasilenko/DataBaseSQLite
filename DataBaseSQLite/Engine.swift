@@ -1,10 +1,3 @@
-//
-//  Engine.swift
-//  DataBaseSQLite
-//
-//  Created by Артем on 4/10/19.
-//  Copyright © 2019 Артем. All rights reserved.
-//
 
 import Foundation
 
@@ -22,5 +15,19 @@ class Engine: DB {
         print("______ \(myData.arrTables)")
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadCellsInTableView"), object: nil)
+    }
+    
+    func insertInTableEngine(name: String, inTable: String) {
+        insertInTable(db: myData.db!, inTable: inTable, name: name)
+    }
+    
+    func selectFromTheTableEngine(nameTable: String) -> [String] {
+        var result = ["hello"]
+        myData.arrTables = selectFromTable(db: myData.db!, name: "*", inTable: nameTable, afterWhere: "")
+        
+        myData.arrTables.forEach {
+            result.append($0)
+        }
+        return result
     }
 }

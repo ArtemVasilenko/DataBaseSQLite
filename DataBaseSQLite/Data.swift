@@ -20,6 +20,6 @@ struct myData {
     static let table = ""
     static var nameDB = ""
     static var db: OpaquePointer?
-    static var arrTables = ["raz", "dva"]
+    static var arrTables = [String]()
     
 }

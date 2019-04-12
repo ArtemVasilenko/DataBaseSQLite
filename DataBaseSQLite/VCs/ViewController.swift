@@ -81,5 +81,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let resultVC = storyboard.instantiateViewController(withIdentifier: "resultVC") as! ResultViewController
+        
+        let nameCell = myData.arrTables[indexPath.row]
+        print(nameCell)
+        
+        resultVC.nameTable = nameCell
+        
+        self.present(resultVC, animated: true, completion: nil)
+        
+        
+    }
 }
 
