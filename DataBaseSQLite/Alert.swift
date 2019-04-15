@@ -33,7 +33,6 @@ class Alert {
             Engine.myEngine.createTableInBDEngine(name: name)
             
         }
-        
         alert.addAction(submitAction)
         inVC.present(alert, animated: true, completion: nil)
     }

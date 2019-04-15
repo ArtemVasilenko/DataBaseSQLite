@@ -141,13 +141,13 @@
                                         <rect key="frame" x="0.0" y="409" width="374" height="409"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I6p-2N-4bd">
-                                                <rect key="frame" x="8" y="189" width="358" height="30"/>
+                                                <rect key="frame" x="8" y="189.5" width="358" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFg-g5-Ude">
-                                                <rect key="frame" x="160" y="227" width="54" height="30"/>
+                                                <rect key="frame" x="160" y="227.5" width="54" height="30"/>
                                                 <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Append"/>
                                                 <connections>
@@ -158,9 +158,10 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="I6p-2N-4bd" secondAttribute="trailing" constant="8" id="5kO-Dm-myL"/>
-                                            <constraint firstItem="I6p-2N-4bd" firstAttribute="top" secondItem="F8P-tD-jp3" secondAttribute="top" constant="189" id="Ceq-6K-nzm"/>
+                                            <constraint firstItem="I6p-2N-4bd" firstAttribute="centerX" secondItem="F8P-tD-jp3" secondAttribute="centerX" id="CHm-Pi-H1n"/>
                                             <constraint firstItem="wFg-g5-Ude" firstAttribute="centerX" secondItem="F8P-tD-jp3" secondAttribute="centerX" id="FcQ-dp-o3h"/>
                                             <constraint firstItem="I6p-2N-4bd" firstAttribute="leading" secondItem="F8P-tD-jp3" secondAttribute="leading" constant="8" id="Ma0-cr-Kcx"/>
+                                            <constraint firstItem="I6p-2N-4bd" firstAttribute="centerY" secondItem="F8P-tD-jp3" secondAttribute="centerY" id="Ugf-aT-50o"/>
                                             <constraint firstItem="wFg-g5-Ude" firstAttribute="top" secondItem="I6p-2N-4bd" secondAttribute="bottom" constant="8" id="mAW-6p-MGe"/>
                                         </constraints>
                                     </view>
@@ -183,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVM-bT-hBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049.2753623188407" y="114.50892857142857"/>
+            <point key="canvasLocation" x="829" y="104"/>
         </scene>
     </scenes>
 </document>

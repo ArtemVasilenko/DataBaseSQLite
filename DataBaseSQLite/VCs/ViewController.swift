@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController, DB {
+class ViewController: UIViewController {
     var alert = Alert()
     
     @IBOutlet var controlButtons: [UIButton]!

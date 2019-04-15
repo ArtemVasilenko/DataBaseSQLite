@@ -3,8 +3,8 @@ import Foundation
 import UIKit
 
 protocol DB {
-    func removeDB(url: URL, fm: FileManager)
-    func createURL(nameDB: String, fm: FileManager) -> URL
+    func removeDB(url: URL, fm: FileManager) //вынести в отдельный протокол
+    func createURL(nameDB: String, fm: FileManager) -> URL //вынести в отдельный протокол
     func createDataBase(url: URL) -> OpaquePointer?
     func createTableInDB(db: OpaquePointer, newTable: String)
     func insertInTable(db: OpaquePointer, inTable: String, name: String)
