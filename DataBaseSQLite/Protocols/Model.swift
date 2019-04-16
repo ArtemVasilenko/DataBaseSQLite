@@ -1,10 +1,7 @@
 import SQLite3
 import Foundation
-import UIKit
 
 protocol DB {
-    func removeDB(url: URL, fm: FileManager) //вынести в отдельный протокол
-    func createURL(nameDB: String, fm: FileManager) -> URL //вынести в отдельный протокол
     func createDataBase(url: URL) -> OpaquePointer?
     func createTableInDB(db: OpaquePointer, newTable: String)
     func insertInTable(db: OpaquePointer, inTable: String, name: String)
@@ -18,25 +15,6 @@ protocol DB {
 }
 
 extension DB {
-    
-    func createURL(nameDB: String, fm: FileManager) -> URL {
-        var url = URL(fileURLWithPath: "")
-        do {
-            url = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(nameDB)
-        } catch {
-            print(error)
-        }
-        return url
-    }
-    
-    func removeDB(url: URL, fm: FileManager) {
-        do {
-            try fm.removeItem(at: url)
-        } catch {
-            print("error delete DB")
-        }
-        
-    }
     
     func createDataBase(url: URL) -> OpaquePointer? {
         var db: OpaquePointer? = nil
@@ -199,9 +177,7 @@ extension DB {
                 value += " " + name
             }
             values.append(value)
-            
         }
-        
         return values
     }
     

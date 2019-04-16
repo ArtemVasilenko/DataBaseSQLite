@@ -36,4 +36,24 @@ class Alert {
         alert.addAction(submitAction)
         inVC.present(alert, animated: true, completion: nil)
     }
+    
+    func alertUpdateTable(inVC: UIViewController, inTable: String, id: Int) {
+        var name = String()
+
+        let alert = UIAlertController(title: "Edit", message: "Name", preferredStyle: .alert)
+        alert.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
+            let answer = alert.textFields![0]
+            name = answer.text ?? ""
+            
+            Engine.myEngine.updateTableEngine(name: name, inTable: inTable, id: String(id))
+            
+        }
+        
+        alert.addAction(submitAction)
+        inVC.present(alert, animated: true, completion: nil)
+        
+    }
+    
 }

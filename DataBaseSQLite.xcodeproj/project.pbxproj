@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC7F1B442265FE6E000C8724 /* FM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F1B432265FE6E000C8724 /* FM.swift */; };
 		ACA8A30E2253C5B400329C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA8A30D2253C5B400329C8A /* AppDelegate.swift */; };
 		ACA8A3102253C5B400329C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA8A30F2253C5B400329C8A /* ViewController.swift */; };
 		ACA8A3132253C5B400329C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA8A3112253C5B400329C8A /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC7F1B432265FE6E000C8724 /* FM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FM.swift; sourceTree = "<group>"; };
 		ACA8A30A2253C5B400329C8A /* DataBaseSQLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataBaseSQLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA8A30D2253C5B400329C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA8A30F2253C5B400329C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC7F1B452265FF70000C8724 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ACA8A31F2253CAF600329C8A /* Model.swift */,
+				AC7F1B432265FE6E000C8724 /* FM.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AC7F1B462265FFAB000C8724 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				ACA8A321225B35F600329C8A /* Alert.swift */,
+				ACA8A329225E480B00329C8A /* Engine.swift */,
+				ACA8A327225C851300329C8A /* Data.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
 		ACA8A3012253C5B400329C8A = {
 			isa = PBXGroup;
 			children = (
@@ -66,10 +87,8 @@
 			children = (
 				ACA8A30D2253C5B400329C8A /* AppDelegate.swift */,
 				ACA8A32F225F80AD00329C8A /* VCs */,
-				ACA8A31F2253CAF600329C8A /* Model.swift */,
-				ACA8A321225B35F600329C8A /* Alert.swift */,
-				ACA8A329225E480B00329C8A /* Engine.swift */,
-				ACA8A327225C851300329C8A /* Data.swift */,
+				AC7F1B452265FF70000C8724 /* Protocols */,
+				AC7F1B462265FFAB000C8724 /* Engine */,
 				ACA8A3112253C5B400329C8A /* Main.storyboard */,
 				ACA8A3142253C5B900329C8A /* Assets.xcassets */,
 				ACA8A3162253C5B900329C8A /* LaunchScreen.storyboard */,
@@ -164,6 +183,7 @@
 				ACA8A328225C851300329C8A /* Data.swift in Sources */,
 				ACA8A3102253C5B400329C8A /* ViewController.swift in Sources */,
 				ACA8A322225B35F600329C8A /* Alert.swift in Sources */,
+				AC7F1B442265FE6E000C8724 /* FM.swift in Sources */,
 				ACA8A30E2253C5B400329C8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

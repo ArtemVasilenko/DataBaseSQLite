@@ -66,12 +66,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        //
+        
                 cell.backgroundColor = .darkGray
-        //
-        //        let label = UILabel(frame: CGRect(x: 70, y: 70, width: cell.frame.width, height: 36))
-        //        label.text = myData.arrTables[indexPath.row]
-        //        cell.addSubview(label)
+    
         cell.textLabel?.text = myData.arrTables[indexPath.row]
         
         return cell
@@ -95,7 +92,42 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.present(resultVC, animated: true, completion: nil)
         
-        
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        
+//        if editingStyle == .insert {
+//            print("insert")
+//        }
+//        
+//        
+//        
+//    }
+    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        
+//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+//            
+//        }
+//        delete.backgroundColor = UIColor.red
+//        
+//        let nameCell = myData.arrTables[indexPath.row]
+//
+//        
+//        let complete = UITableViewRowAction(style: .destructive, title: "Completed") { (action, indexPath) in
+//            
+//            self.alert.alertUpdateTable(inVC: self, inTable: nameCell, id: "1")
+//            self.myTable.reloadData()
+//            
+//            
+//        }
+//        complete.backgroundColor = UIColor.blue
+//        
+//        return [delete, complete]
+//        
+//        
+//    }
+    
+    
 }
 

@@ -1,7 +1,7 @@
 
 import Foundation
 
-class Engine: DB {
+class Engine: DB, FM {
     
     static var myEngine = Engine() //<---- СИНГЛ ТОН МАТЬ ЕГО!
     
@@ -29,5 +29,9 @@ class Engine: DB {
             result.append($0)
         }
         return result
+    }
+    
+    func updateTableEngine(name: String, inTable: String, id: String) {
+        updateTableWithGuard(db: myData.db!, inTable: inTable, name: name, id: id)
     }
 }
