@@ -39,6 +39,7 @@ extension DB {
             print("prepare create table: error")
             return }
         print("query table done")
+        
         guard sqlite3_step(table) == SQLITE_DONE else {
             print("table query error")
             return
